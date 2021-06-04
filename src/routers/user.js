@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/user");
 const auth = require("../middleware/auth");
+const multer = require("multer");
 
 const router = express.Router();
 
@@ -109,6 +110,29 @@ router.patch("/users/me", [auth], async (req, res) => {
 //     res.status(400).send(e);
 //   }
 // });
+
+const upload = multer({
+  dest: "./uploads/avatars",
+  limits: { fileSize: 1000000 },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpeg|jpg|png|gif)$/)) {
+      return cb(
+        new Error("Please, Upload only .jpeg, .jpg, .png, and .gif files.")
+      );
+    }
+    cb(undefined, true);
+  },
+});
+router.post(
+  "/users/me/avatar",
+  [upload.single("avatar")],
+  async (req, res) => {
+    res.send("f");
+  },
+  (err, req, res, next) => {
+    res.status(400).send({ error: err.message });
+  }
+);
 
 router.delete("/users/me", [auth], async (req, res) => {
   const _id = req.params.id;
