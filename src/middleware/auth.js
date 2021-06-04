@@ -15,6 +15,7 @@ const auth = async (req, res, next) => {
     req.user = user;
     next();
   } catch (e) {
+    console.log(e);
     res.send({ error: "Please, login or register" });
   }
 };
