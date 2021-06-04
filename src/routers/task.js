@@ -19,11 +19,23 @@ router.get("/tasks", [auth], async (req, res) => {
   if (req.query.completed) {
     match.completed = req.query.completed === "true";
   }
+  // if (req.query.limit || req.query.skip) {
+  //   if (req.query.limit < 0 || req.query.skip < 0) res.status(400).send();
+  // }
   try {
-    await req.user.populate({ path: "tasks", match }).execPopulate();
+    await req.user
+      .populate({
+        path: "tasks",
+        match,
+        options: {
+          limit: parseInt(req.query.limit),
+          skip: parseInt(req.query.skip),
+        },
+      })
+      .execPopulate();
     res.send(req.user.tasks);
   } catch (e) {
-    res.status(500).send(err);
+    res.status(500).send();
   }
 });
 
