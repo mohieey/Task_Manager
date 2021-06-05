@@ -1,4 +1,5 @@
-## Live Version with documentation: 
+## Live Version with documentation:
+
 ## https://mohiey-task-manager.herokuapp.com
 
 ## About The Project
@@ -12,3 +13,15 @@ I've learned to use some new packages and also refreshed some of my information 
 ### Built With
 
 Node.JS
+
+### Used Packages
+
+- express
+- mongoose
+- validator
+- bcrypt
+- jsonwebtoken
+- multer
+- sharp
+- sendgrid
+- env-cmd@8.0.2
