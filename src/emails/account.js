@@ -16,7 +16,7 @@ const sendWelcomeEmail = async (email, name) => {
 const sendGoodByeEmail = (email, name) => {
   const msg = {
     to: email,
-    from: myMail,
+    from: process.env.myMail,
     subject: "Account Deleted",
     text: `Hello ${name}, your account has been deleted, we hope to see you soon.`,
   };
