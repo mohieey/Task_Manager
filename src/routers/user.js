@@ -151,7 +151,7 @@ router.delete("/users/me/avatar", [auth], async (req, res) => {
 
 router.get("/users/me/avatar", [auth], async (req, res) => {
   try {
-    if (!user || !user.avatar) throw new Error();
+    if (!req.user.avatar) throw new Error();
     res.set("Content-Type", "image/jpeg");
     res.send(req.user.avatar);
   } catch (e) {
