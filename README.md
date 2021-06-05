@@ -1,4 +1,4 @@
-## Live Version with documentatioon: https://documenter.getpostman.com/view/16084742/TzY4eEtz
+## Live Version with documentation: https://documenter.getpostman.com/view/16084742/TzY4eEtz
 
 ## About The Project
 
