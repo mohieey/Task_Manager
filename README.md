@@ -25,3 +25,5 @@ Node.JS
 - sharp
 - sendgrid
 - env-cmd@8.0.2
+
+### For testing I used jest and supertest packages
